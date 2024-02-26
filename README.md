@@ -17,6 +17,7 @@ sam-list: Generates a CSV report (list.csv) of selected EC2 metadata for chosen 
 
 
 Getting Started
+
 To utilize the SAM Toolbox, follow these simple steps:
 
 1. Clone the Repository: Clone this repository to your local machine using Git or download the ZIP file from GitHub.
@@ -30,9 +31,11 @@ Upload to AWS CloudShell: Log in to your AWS Management Console, open CloudShell
 chmod +x sam-*
 
 Using the Toolbox
+
 Each script in the SAM Toolbox starts by mapping all EC2 instances in the current AWS account and region. This approach ensures that sysadmins are not overwhelmed by the output and can easily manage instances region by region.
 
 Basic Workflow
+
 Instance Selection: Upon execution, you're prompted to select EC2 instances from the generated map. You can choose specific instances or select "All".
 
 Execute Module Functionality: Depending on the module you're running, you'll either execute commands on instances, manage instance states, apply tags, or generate metadata reports.
@@ -40,13 +43,8 @@ Execute Module Functionality: Depending on the module you're running, you'll eit
 Review Outputs: Each module generates a specific output file, providing a clear and concise summary of the actions taken or information gathered.
 
 Customization
+
 The SAM Toolbox is designed with customization in mind. Each script includes comments guiding you on how to extend or modify its functionality to suit your specific needs. Whether you're looking to automate more complex tasks or integrate with other tools, SAM Toolbox provides a solid foundation to build upon.
-
-Screenshots
-Placeholder for screenshots demonstrating the toolbox in action.
-
-Contribution
-Contributions to the SAM Toolbox are welcome! Whether it's adding new features, improving existing scripts, or fixing bugs, your help is appreciated in making this toolbox more useful for the AWS community.
 
 License
 This project is licensed under the GPL License - see the LICENSE file for details.
