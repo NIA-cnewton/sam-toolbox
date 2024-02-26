@@ -6,26 +6,23 @@ target_dir="$base_dir/sam"
 zip_file="$base_dir/sam-toolbox-main.zip"
 temp_dir="$base_dir/temp-sam-extract"
 
-# Create temp directory for extraction
-echo "Preparing extraction..."
-mkdir -p "$temp_dir"
-unzip -o "$zip_file" -d "$temp_dir"
-
-# Determine the extracted folder's name and path
-extracted_folder=$(ls "$temp_dir")
-extracted_path="$temp_dir/$extracted_folder"
-
-# Check if the target directory exists
-echo "Setting up the 'sam' directory..."
-if [ -d "$target_dir" ]; then
-    echo "Directory $target_dir already exists."
-else
-    # Move the extracted contents to the target directory
-    mv "$extracted_path" "$target_dir"
-    echo "'sam' directory has been set up successfully."
+# Create the target directory if it doesn't exist
+echo "Checking for the directory..."
+if [ ! -d "$target_dir" ]; then
+    echo "Creating the directory: $target_dir"
+    mkdir -p "$target_dir"
 fi
 
-# Change permissions of the files starting with 'sam'
+# Unzip the file into the temp directory
+echo "Unzipping $zip_file..."
+unzip -o "$zip_file" -d "$temp_dir"
+
+# Move the contents from the extracted folder to the target directory
+extracted_folder=$(ls "$temp_dir") # Assuming there's only one folder extracted
+echo "Moving files to the 'sam' directory..."
+mv -n "$temp_dir/$extracted_folder/"* "$target_dir"
+
+# Change permissions of the files starting with 'sam' in the target directory
 echo "Changing permissions of the files..."
 chmod +x $target_dir/sam*
 
