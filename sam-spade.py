@@ -49,8 +49,13 @@ def print_aws_account_info():
 def create_instance_map():
     ec2 = boto3.client('ec2')
     instances = ec2.describe_instances(
-        Filters=[{'Name': 'instance-state-name', 'Values': ['running']}]
+        Filters=[{'Name': 'instance-state-name', 'Values': ['pending', 'running', 'shutting-down', 'terminated', 'stopping', 'stopped']}]
     )
+    statuses = ec2.describe_instance_status(IncludeAllInstances=True)
+
+    status_dict = {status['InstanceId']: status['InstanceState']['Code'] for status in statuses['InstanceStatuses']}
+    status_text = {0: 'pending', 16: 'running', 32: 'shutting-down', 48: 'terminated', 64: 'stopping', 80: 'stopped'}
+    status_color = {0: '\033[93m', 16: '\033[92m', 32: '\033[93m', 48: '\033[91m', 64: '\033[93m', 80: '\033[91m'}
 
     instance_dict = {}
     ref_number = 1
@@ -60,10 +65,13 @@ def create_instance_map():
         for instance in reservation['Instances']:
             instance_id = instance['InstanceId']
             instance_name = next(
-                (tag['Value'] for tag in instance.get('Tags', []) if tag['Key'] == 'Name'), # To use a different tag value, change the 'Name' to the key of the desired tag's key/value pair
+                (tag['Value'] for tag in instance.get('Tags', []) if tag['Key'] == 'Name'),
                 'No Name Tag'
             )
-            print(f"{ref_number}. {instance_id} ({instance_name})")
+            instance_status_code = status_dict.get(instance_id, None)
+            instance_status = status_text.get(instance_status_code, 'Unknown')
+            color = status_color.get(instance_status_code, '\033[0m')  # Default to no color if status unknown
+            print(f"{ref_number}. {color}{instance_status}\033[0m {instance_id} ({instance_name})")
             instance_dict[instance_id] = instance_name
             ref_number += 1
 
