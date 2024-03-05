@@ -24,16 +24,20 @@ sam-list: Generates a CSV report (list.csv) of selected EC2 metadata for chosen 
 To utilize the SAM Toolbox, follow these simple steps:
 
 1. Click on the <> Code button in the repo, and select Download Zip
-   ![image](https://github.com/NIA-cnewton/sam-toolbox/assets/140832515/23dc54dd-7f38-430c-9fe0-a3a07b604c51)
+   
+![image](https://github.com/NIA-cnewton/sam-toolbox/assets/140832515/23dc54dd-7f38-430c-9fe0-a3a07b604c51)
  
 2. Extract the zip file on your local machine, and log into your Cloudshell environment
+   
 ![image](https://github.com/NIA-cnewton/sam-toolbox/assets/140832515/24c335cc-7df3-4997-bd8b-1da9df781652)
 
-3. Select the Actions dropdown menu, and choose Upload File for each of the .py files. The files will be stored in the /home/cloudshell-user directory, regardless of your working directory when you select the option from the drop down menu 
+3. Select the Actions dropdown menu, and choose Upload File for each of the .py files. The files will be stored in the /home/cloudshell-user directory, regardless of your working directory when you select the option from the drop down menu
+   
 ![image](https://github.com/NIA-cnewton/sam-toolbox/assets/140832515/30280e3d-cc90-4eac-9a3c-bdb52e0cfe98)
 
 4. Add the execution permission to the scripts > chmod u+x sam-*
 > chmod u+x sam-*
+
 5. Run the commands as needed
 > ./sam-spade.py
 
@@ -51,7 +55,7 @@ Review Outputs: Each module generates a specific output file, providing a clear 
 
 ## Customization
 
-The SAM Toolbox is designed with customization in mind. Each script includes comments guiding you on how to extend or modify its functionality to suit your specific needs. Whether you're looking to automate more complex tasks or integrate with other tools, SAM Toolbox provides a solid foundation to build upon.
+The SAM Toolbox is designed with customization in mind. Each script includes comments guiding you on how to extend or modify its functionality to suit your specific needs.
 
 ## License
 This project is licensed under the GPL License - see the LICENSE file for details.
