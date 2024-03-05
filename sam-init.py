@@ -88,12 +88,21 @@ def create_instance_map():
         for i, (instance_id, instance_details) in enumerate(instance_dict.items(), start=1):
             if str(i) in selected_refs_list:
                 selected_instance_id_name_map[instance_id] = instance_details
+     
+# To create custom scripts, comment out the entire section from here back to the beginning of this function, and uncomment the lines below
+# Add your specific instance ids to the map below, and the script will target them automatically each time without prompting
+# Instance name does not dynamically populate, but you can hard code the values here that you want to display on the screen or in the csv
+    # selected_instance_id_name_map = {
+    #     'i-05dfxxxxxxxxxxx44': ('Instance Name 1', 'Instance Previous State 1'),
+    #     'i-0d87ddxxxxxxxxxxx': ('Instance Name 2', 'Instance Previous State 2')
+    # }
 
     return selected_instance_id_name_map
 
 # Prompts to type which command to send
 #
-# Replace this function to create custom modules
+# To create a custom script with a hard-coded selection, comment out the entire select_command() function and then follow the instructions in
+# the main() function
 
 def select_command():
     print("\nSelect the action to perform on the selected instances:")
@@ -102,7 +111,7 @@ def select_command():
     print("3. Reboot instances")
     print("4. Exit")
     choice = input("Enter your choice (1-4): ")
-    
+
     actions = {
         '1': 'aws ec2 start-instances',
         '2': 'aws ec2 stop-instances',
@@ -117,7 +126,6 @@ def select_command():
             confirm = input("Do you wish to exit? (y/n): ")
         else:
             confirm = input(f"Do you wish to {action_word} the selected instances (y/n)? ")
-
         
         if confirm.lower() == 'y':
             if choice == '4':
@@ -250,6 +258,9 @@ def main():
         action = select_command()  # Let the user select the action
         if action is None:
             continue  # If the action selection was cancelled, restart the loop
+# To create custom scripts, comment out the three lines above and uncomment the line below. Choose your desired action from the 'actions' section
+# of the select_command() function        
+        # action = 'aws ec2 start-instances'
 
         if action != 'exit':
             successful_instances = execute_command(instance_id_name_map, action)  # Execute the specified action on the selected instances
@@ -268,6 +279,7 @@ def main():
                         final_statuses[inst_id]  # Current state from final_statuses
                     ) for inst_id in final_statuses
                 }
+                # To disable the automatic saving of a csv file, comment out the line below
                 output_csv(instances_details_for_csv)  # Output the final statuses to a CSV file
                 break
             else:
