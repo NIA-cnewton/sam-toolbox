@@ -1,3 +1,5 @@
+![image](https://github.com/NIA-cnewton/sam-toolbox/assets/140832515/cb3ffb62-d558-43db-b412-63554beeabe2)
+
 # Simple AWS Manager (SAM) Toolbox
 
 The Simple AWS Manager (SAM) Toolbox is a collection of lightweight Python scripts designed for AWS CloudShell, aimed at providing AWS sysadmins with a highly portable and customizable toolkit for managing AWS EC2 instances in a repeatable and portable way.
