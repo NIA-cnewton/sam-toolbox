@@ -10,13 +10,13 @@ The SAM Toolbox consists of four main modules, each offering distinct functional
 
 ## Modules Overview
 
-### sam-spade: Executes custom commands on selected EC2 instances via AWS SSM and outputs the results in the file spade.csv.
+**sam-spade:** Executes custom commands on selected EC2 instances via AWS SSM and outputs the results in the file spade.csv.
 
-### sam-init: Provides the ability to start, stop, or reboot selected instances, with a log of actions taken saved in init.csv.
+**sam-init:** Provides the ability to start, stop, or reboot selected instances, with a log of actions taken saved in init.csv.
 
-### sam-tags: Applies user-defined tags to selected instances, with a completion status report saved in tags.csv.
+**sam-tags:** Applies user-defined tags to selected instances, with a completion status report saved in tags.csv.
 
-### sam-list: Generates a CSV report (list.csv) of selected EC2 metadata for chosen instances.
+**sam-list:** Generates a CSV report (list.csv) of selected EC2 metadata for chosen instances.
 
 
 ## Getting Started
