@@ -1,5 +1,5 @@
 ![image](https://github.com/NIA-cnewton/sam-toolbox/assets/140832515/89098cbf-59be-4a74-85e3-9e39c3346328)
-* * Play it again * *
+_Play it again_
 
 
 # Simple AWS Manager (SAM) Toolbox
